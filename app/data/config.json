@@ -1,0 +1,11 @@
+{
+  "teams":[{
+      "name":"Bais",
+      "score":0,
+      "color":"#bbdefb"
+    },{
+      "name":"Gurls",
+      "score":0,
+      "color":"#f8bbd0"
+    }]
+}

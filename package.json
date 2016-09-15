@@ -1,0 +1,27 @@
+{
+  "name": "sunday-school-quiz",
+  "version": "1.0.0",
+  "description": "A Sunday School quiz application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewcodes/SundaySchoolQuiz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewcodes/SundaySchoolQuiz/issues"
+  },
+  "homepage": "https://github.com/matthewcodes/SundaySchoolQuiz#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "flipclock": "^0.7.8",
+    "jquery": "^3.1.0",
+    "socket.io": "^1.4.8"
+  }
+}

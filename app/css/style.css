@@ -1,0 +1,20 @@
+html, body {
+   height: 100%;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 45px;
+}
+
+
+.question {
+  margin-top:50px;
+}
+
+.timer {
+  margin-top: 70px;
+}
