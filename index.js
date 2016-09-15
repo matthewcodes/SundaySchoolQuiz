@@ -10,6 +10,13 @@ app.use('/js/angular.min.js', express.static(path.join(__dirname,'node_modules',
 app.use('/css', express.static(path.join(__dirname,'node_modules','bootstrap','dist','css')));
 app.use('/fonts', express.static(path.join(__dirname,'node_modules','bootstrap','dist','fonts')));
 
+app.use('/remote', express.static('remote'))
+app.use('/remote/js', express.static(path.join(__dirname,'node_modules','bootstrap','dist','js')));
+app.use('/remote/js/jquery.min.js', express.static(path.join(__dirname,'node_modules','jquery','dist','jquery.min.js')));
+app.use('/remote/js/angular.min.js', express.static(path.join(__dirname,'node_modules','angular','angular.min.js')));
+app.use('/remote/css', express.static(path.join(__dirname,'node_modules','bootstrap','dist','css')));
+app.use('/remote/fonts', express.static(path.join(__dirname,'node_modules','bootstrap','dist','fonts')));
+
 app.listen(3000, function () {
   console.log('listening on port 3000!');
 });

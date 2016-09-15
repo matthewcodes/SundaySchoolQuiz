@@ -6,6 +6,7 @@
     this.questions = []
     this.timeLeft = 60;
     this.timeLeftTimer;
+    this.state = "NOT_STARTED"
     var controller = this;
 
     this.startTimer = function() {
