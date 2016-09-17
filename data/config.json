@@ -7,5 +7,7 @@
       "name":"Gurls",
       "score":0,
       "color":"#f8bbd0"
-    }]
+    }],
+  "timeUpIntervalInSeconds":10,
+  "currentQuestion":0
 }

@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Sunday School Quiz - Remote</title>
 
@@ -11,9 +12,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/quizController.js"></script>
+    <script src="js/remoteController.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +28,51 @@
 
     <div class="container" ng-controller="remoteController as remoteCtrl">
 
-      <h1>Remote</h1>
+      <h1 class="text-center">Quiz Remote</h1>
+      <hr>
+
+      <div ng-if="remoteCtrl.state == 'NOT_STARTED' || remoteCtrl.state == 'STARTING_TEAM_SELECTED'">
+
+        <p class="text-center">Choose Starting team</p>
+
+        <button class="btn btn-lg btn-default btn-block"
+                ng-click="remoteCtrl.startingTeam(0)"
+                type="button">{{remoteCtrl.config.teams[0].name}}</button>
+
+        <button class="btn btn-lg btn-default btn-block"
+                ng-click="remoteCtrl.startingTeam(1)"
+                type="button">{{remoteCtrl.config.teams[1].name}}</button>
+
+        <hr>
+
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="remoteCtrl.startQuiz()"
+                ng-disabled="remoteCtrl.state != 'STARTING_TEAM_SELECTED'"
+                type="button">START</button>
+      </div>
+
+      <div ng-if="remoteCtrl.state == 'STARTED' || remoteCtrl.state == 'TIMES_UP' || remoteCtrl.state == 'BUZZER_PRESSED' || remoteCtrl.state == 'READY_FOR_NEXT_QUESTION'">
+        <h3 class="text-center">{{remoteCtrl.question.question}}?</h3>
+        <br>
+        <p class="lead text-center">{{remoteCtrl.question.answer}}</p>
+        <br>
+      </div>
+
+      <div ng-if="remoteCtrl.state == 'BUZZER_PRESSED'">
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="remoteCtrl.answeredCorrectly()"
+                type="button">CORRECT</button>
+
+        <button class="btn btn-lg btn-danger btn-block"
+                ng-click="remoteCtrl.answeredIncorrectly()"
+                type="button">INCORRECT</button>
+      </div>
+
+      <div ng-if="remoteCtrl.state == 'TIMES_UP' || remoteCtrl.state == 'READY_FOR_NEXT_QUESTION'">
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="remoteCtrl.nextQuestion()"
+                type="button">NEXT QUESTION</button>
+      </div>
 
 
     </div>
