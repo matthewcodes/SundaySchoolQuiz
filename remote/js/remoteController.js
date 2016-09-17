@@ -43,6 +43,10 @@
       controller.socket.emit('correct_answer', controller.currentTeam)
     }
 
+    this.answeredIncorrectly = function() {
+
+    }
+
     this.socket.on('times_up', function (data) {
       $timeout(function() {
         controller.state = 'TIMES_UP';
@@ -88,6 +92,7 @@
         if(!err) {
           controller.config = response.data;
         }
+        
       })
       this.httpGet('/state', function(err, response) {
         if(!err) {
