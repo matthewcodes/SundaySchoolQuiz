@@ -10,6 +10,7 @@
     this.currentTeam;
     this.quizStarted = false;
     this.timesUp = false;
+    this.answeredQuestion = false;
     this.buzzerPressed = false;
     var controller = this;
 
@@ -26,6 +27,7 @@
     });
 
     this.socket.on('start_quiz', function (data) {
+      controller.answeredQuestion = false;
       controller.getCurrentQuestion(function(err, question) {
         controller.startTimer()
       })
@@ -38,6 +40,7 @@
     });
 
     this.socket.on('next_question', function (data) {
+      controller.answeredQuestion = false
       controller.getCurrentQuestion(function(err, question) {
         controller.startTimer()
       })
@@ -50,6 +53,7 @@
     });
 
     this.socket.on('correct_answer', function (data) {
+      controller.answeredQuestion = true
       var score = controller.config.teams[controller.currentTeam].score + controller.timeLeft;
       $timeout(function(){
         controller.config.teams[controller.currentTeam].score = score
@@ -60,6 +64,19 @@
         'score':score
       })
     });
+
+    this.socket.on('incorrect_answer', function (data) {
+      controller.answeredQuestion = true
+      var score = controller.config.teams[controller.currentTeam].score - 5;
+      $timeout(function(){
+        controller.config.teams[controller.currentTeam].score = score
+        controller.resetTimer();
+      })
+      controller.socket.emit('score_update', {
+        'team':controller.currentTeam,
+        'score':score
+      })
+    })
 
 
     this.socket.on('buzzer_pressed', function (data) {

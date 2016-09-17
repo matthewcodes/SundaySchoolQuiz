@@ -44,7 +44,7 @@
     }
 
     this.answeredIncorrectly = function() {
-
+      controller.socket.emit('incorrect_answer', controller.currentTeam)
     }
 
     this.socket.on('times_up', function (data) {
@@ -92,7 +92,7 @@
         if(!err) {
           controller.config = response.data;
         }
-        
+
       })
       this.httpGet('/state', function(err, response) {
         if(!err) {

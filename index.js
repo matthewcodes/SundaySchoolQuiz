@@ -100,6 +100,10 @@ io.on('connection', function(socket){
       io.emit('correct_answer', data);
     })
 
+    socket.on('incorrect_answer', function(data) {
+      io.emit('incorrect_answer', data);
+    })
+
     socket.on('score_update', function(data) {
       io.emit('score_update', data);
     })
