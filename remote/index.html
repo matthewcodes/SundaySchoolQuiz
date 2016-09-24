@@ -58,6 +58,13 @@
         <br>
       </div>
 
+      <div ng-if="remoteCtrl.state == 'STARTED'">
+        <button class="btn btn-lg btn-danger btn-block"
+                ng-click="remoteCtrl.buzzerPressed()"
+                type="button">BUZZ</button>
+      </div>
+
+
       <div ng-if="remoteCtrl.state == 'BUZZER_PRESSED'">
         <button class="btn btn-lg btn-success btn-block"
                 ng-click="remoteCtrl.answeredCorrectly()"

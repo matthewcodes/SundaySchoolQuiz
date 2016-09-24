@@ -21,6 +21,10 @@
       this.socket.emit('start_quiz', 'start')
     }
 
+    this.buzzerPressed = function() {
+      this.socket.emit('buzzer_pressed', true)
+    }
+
     this.nextQuestion = function() {
       controller.state = 'STARTED';
       this.httpGet('/data/question/next', function(err, response) {

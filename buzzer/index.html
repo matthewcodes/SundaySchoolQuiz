@@ -28,13 +28,7 @@
 
     <div class="container" ng-controller="buzzerController as buzzerCtrl">
 
-      <!-- <button class="btn btn-lg btn-default btn-block"
-              ng-click="buzzerCtrl.buzzerPressed()"
-              ng-disabled="buzzerCtrl.disableBuzzer"
-              type="button">BUZZER</button> -->
-
-      <img ng-src="{{buzzerCtrl.bigRedButtonSrc}}" class="img-responsive" ng-click="buzzerCtrl.buzzerPressed()" ng-hide="buzzerCtrl.disableBuzzer">
-      <h1 class="text-center" ng-show="buzzerCtrl.disableBuzzer">BUZZED!</h1>
+      <img src="/buzzer/img/bigredbutton.jpg" class="img-responsive" ng-click="buzzerCtrl.buzzerPressed()">
 
     </div>
 
